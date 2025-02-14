@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ты любишь меня?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebee;
+            color: #c62828;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            z-index: 1;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #yesButton {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #noButton {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        .heart {
+            position: absolute;
+            top: -50px;
+            color: #ff1493;
+            font-size: 20px;
+            animation: fall 5s linear infinite, spin 2s linear infinite;
+        }
+        @keyframes fall {
+            0% { top: -50px; }
+            100% { top: 100vh; }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Ты любишь меня?</h1>
+    <div class="buttons">
+        <button id="yesButton" onclick="window.location.href='answer.html'">Да</button>
+        <button id="noButton">Нет</button>
+    </div>
+
+    <!-- Сердечки -->
+    <div id="heartsContainer"></div>
+
+    <script>
+        // Функция для создания сердечек
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const numHearts = 20;
+
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        createHearts();
+
+        const noButton = document.getElementById('noButton');
+        noButton.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
