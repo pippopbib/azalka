@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ответ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebee;
+            color: #c62828;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5em;
+        }
+        /* Стили для кнопки */
+        #showPhoto {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        #showPhoto:hover {
+            background-color: #d64d90;
+        }
+
+        /* Стили для изображения */
+        #photo {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Я знал, что ты выберешь 💖💖💖</h1>
+    
+    <!-- Кнопка "Мы?" -->
+    <button id="showPhoto">Мы?</button>
+
+    <!-- Фотография -->
+    <img id="photo" src="two-identical-cats-cuddling-bed.png" alt="Наша фотография">
+
+    <!-- Скрипт для показа фото -->
+    <script>
+        document.getElementById("showPhoto").addEventListener("click", function() {
+            var photo = document.getElementById("photo");
+            if (photo.style.display === "none") {
+                photo.style.display = "block";
+            } else {
+                photo.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
